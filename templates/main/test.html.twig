@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Testou</h1>
+<div>
+    {# Créer une variable + filtre majuscule upper ou lenght (nb de lettres dans le mot) #}
+    {% set name = 'Tiphaine' %}
+    <h2>{{ name | upper }}</h2>
+    <h2>Nombre de lettres dans le prénom : {{ name | length }}</h2>
+
+    {# les dates #}
+    <div> {{ "now"|date('Y') }}</div>
+    <div> {{ "+1 year"|date('Y') }}</div>
+
+
+    {# Créer un tableau #}
+    {% set colors = ["orange", "brown", "turquoise", "blue"] %}
+    <div>Nombre de couleurs : {{ colors|length }}</div>
+
+    <div>{{ colors|join('/') }}</div>
+
+    {# inverse du php : foreach $colors as $color #}
+    {# loop.index: affiche l'itération en cours et loop.last pour le dernier passage dans la boucle #}
+    {% for color in colors %}
+        <div>{{ loop.index }}</div>
+    <div style="background-color:{{ color }} ">{{ color }}</div>
+    {% endfor %}
+
+    {# Un objet #}
+    {% set book = {
+        title :'PifPaf',
+        year:2000,
+        author : 'John Doe'
+    } %}
+    <h3>{{ book.author }}</h3>
+    <div>
+        {% for key, val in book %}
+        <div> {{ key }} : {{ val }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+ {% block title %}{{ parent() }} | Test{% endblock %}

@@ -11,6 +11,8 @@
     <div> {{ "now"|date('Y') }}</div>
     <div> {{ "+1 year"|date('Y') }}</div>
 
+    {# Afficher la var du tableau associatif créée dans le controller #}
+    <div>{{ mySerie.title |raw}} {{ autreVar }}</div>
 
     {# Créer un tableau #}
     {% set colors = ["orange", "brown", "turquoise", "blue"] %}
